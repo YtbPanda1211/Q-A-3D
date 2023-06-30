@@ -1,0 +1,775 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+:root {
+    --primary-color: #191970;
+}
+
+html,
+body {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: var(--primary-color);
+    overflow: hidden;
+}
+
+.container {
+    z-index: 1;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: var(--primary-color);
+    overflow: hidden;
+    /* display: none; */
+}
+
+.bannerGame {
+    z-index: 4;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: animateBanner 1s ease-in-out 1s infinite alternate;
+}
+
+.bannerGame--spacecraftDoor {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-color: white;
+    border: solid 6px black;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px gray;
+}
+
+.bannerGame--spacecraftDoorLeft {
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.bannerGame--spacecraftDoorRight {
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+.bannerGame--contentBox {
+    height: 80px;
+    width: 400px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: solid 4px black;
+}
+
+.bannerGame--contentBox__content {
+    user-select: none;
+    color: black;
+    font-weight: bolder;
+    font-style: italic;
+    font-size: 40px;
+}
+
+.meteorite_animate {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+    left: 10%;
+    width: 200px;
+    animation: meteoriteAnimate 4s ease-in-out 1s infinite;
+}
+
+.astrounat {
+    z-index: 3;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 500px;
+    animation: animateAs 1s ease-in-out infinite alternate;
+}
+
+.animate {
+    z-index: 3;
+    position: absolute;
+    top: 40%;
+    left: 50px;
+    height: fit-content;
+    width: fit-content;
+}
+
+.planet {
+    width: 200px;
+    animation: animatePlanet 2s ease-in-out infinite alternate;
+}
+
+.astrounatRocket {
+    position: absolute;
+    width: 100px;
+    right: 0;
+    top: 0;
+    transform: translate(100%, -50%);
+    animation: animateRocket 1s ease-in-out infinite alternate;
+}
+
+.btnBox {
+    z-index: 3;
+    position: absolute;
+    right: 100px;
+    top: 50%;
+}
+
+.startBtn {
+    font-size: 32px;
+    padding: 10px 30px;
+    color: white;
+    font-weight: bolder;
+    background-color: #bb0000;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 20px 0 #a80000, 0 30px 0 10px white, 0 40px 0 10px #cecdcd;
+    /* animation: animateBtn 1s ease-in-out infinite alternate; */
+    /* transition: .5s; */
+}
+
+.startBtn:hover {
+    animation: none;
+    cursor: grab;
+}
+
+.startBtn:active {
+    background-color: red;
+    box-shadow: 0 0px 0 #ce0000, 0 10px 0 10px white, 0 20px 0 10px #cecdcd;
+    transform: translateY(20px);
+}
+
+.star {
+    z-index: 1;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    filter: blur(2px);
+    background-color: white;
+    border-radius: 50%;
+    animation: starAnimate 1s ease-in-out infinite alternate;
+}
+
+/* -------------------------ANIMATIONS Container---------------------- */
+@keyframes animateBanner {
+    to {
+        transform: translate(-50%, 10px);
+    }
+}
+
+@keyframes meteoriteAnimate {
+    to {
+        top: 200%;
+        left: 100%;
+        transform: scale(6);
+    }
+}
+
+@keyframes animateAs {
+    to {
+        transform: translate(-50%, 20px);
+    }
+}
+
+@keyframes animatePlanet {
+    to {
+        transform: translateY(20px);
+    }
+}
+
+@keyframes animateRocket {
+    to {
+        transform: translate(50%, 20px);
+    }
+}
+
+@keyframes animateBtn {
+    to {
+        transform: translateX(-50px);
+    }
+}
+
+@keyframes starAnimate {
+    to {
+        filter: blur(20px);
+    }
+}
+
+/* ------------------------------------------------------------------- */
+.mainPage {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--primary-color);
+    overflow: hidden;
+    opacity: 0;
+    display: none;
+}
+
+.mainPage--meteorite3 {
+    position: absolute;
+    width: 100px;
+    right: 100px;
+    top: 0;
+    transform: translateY(-100%);
+    animation: meteorite3 2s ease-in-out 1s infinite;
+}
+
+.mainPage--bannerGame {
+    z-index: 6;
+    position: absolute;
+    top: 40px;
+    left: 100px;
+    height: fit-content;
+    width: fit-content;
+}
+
+.mainPage--bannerGame--spaceDoor {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-color: white;
+    border: solid 6px black;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px gray;
+}
+
+.mainPage--bannerGame--contentBox {
+    height: 80px;
+    width: 350px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: solid 4px black;
+}
+
+.mainPage--bannerGame--contentBox__content {
+    color: black;
+    font-weight: bolder;
+    font-style: italic;
+    font-size: 40px;
+}
+
+.mainPage--bannerGame--spaceDoorLeft {
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.mainPage--bannerGame--spaceDoorRight {
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+.mainPage--satellite {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 150px;
+    animation: animateSatellite 1s ease-in-out infinite alternate;
+}
+
+.mainPage--astronaut2 {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    width: 350px;
+}
+
+.questionBox {
+    position: absolute;
+    top: 50%;
+    right: 300px;
+    transform: translateY(-50%);
+    height: 350px;
+    width: 220px;
+    background-color: transparent;
+}
+
+.questionTag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 350px;
+    width: 220px;
+    background-color: black;
+    animation: none;
+    transition: .5s;
+}
+
+.questionTag:nth-child(1) {
+    transform: translateX(-120%) scale(1.2);
+    opacity: 0;
+}
+
+/* .questionTag:nth-child(2) {
+    transform: translateX(120%) scale(.8);
+    opacity: .5;
+} */
+
+.questionTag:nth-child(2) .questionBtn {
+    display: block;
+}
+
+.questionTag:nth-child(3) {
+    transform: translateX(120%) scale(.8);
+    opacity: .5;
+}
+
+.questionTag:nth-child(n + 4) {
+    transform: translateX(240%) scale(.6);
+    opacity: 0;
+}
+
+
+/* .questionTag:nth-child(2) {
+    transform: translatey(-140%, 200%) scale(1.2);
+    opacity: 0;
+} */
+
+/* .questionTag:nth-child(1) {
+    transform: translatey(-140%, 200%) scale(1.2);
+    opacity: 0;
+}
+
+.questionTag:nth-child(2) {
+    transform: translateX(-140%) scale(1.2);
+    opacity: .5;
+}
+
+.questionTag:nth-child(3):hover {
+    transform: scale(1.2);
+}
+
+.questionTag:nth-child(3) .questionBtn {
+    display: block;
+}
+
+.questionTag:nth-child(4) {
+    transform: translateX(120%) scale(.8);
+    opacity: .5;
+}
+
+.questionTag:nth-child(n + 5) {
+    transform: translateX(240%) scale(.8);
+    opacity: 0;
+}
+
+.questionTag:nth-child(n + 6) {
+    display: none;
+}
+
+.questionTag:nth-child(3)::after {
+    position: absolute;
+    content: "";
+    bottom: -20px;
+    left: 0;
+    transform: translateY(50px);
+    height: 40px;
+    width: 220px;
+    background-color: black;
+    filter: blur(10px);
+    border-radius: 50%;
+} */
+
+.questionTag--banner {
+    height: 150px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.questionTag--banner__img {
+    width: 60%;
+}
+
+.questionTag--info {
+    height: calc(100% - 150px);
+    width: 100%;
+    display: grid;
+    grid-template-rows: 40% 60%;
+}
+
+.questionTitleBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.questionTitleBox .questionTitleBox__title {
+    user-select: none;
+    color: white;
+    max-width: 80%;
+    font-weight: bolder;
+}
+
+.questionBtnBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.questionBtnBox .questionBtn {
+    display: none;
+    font-size: 24px;
+    font-weight: bolder;
+    padding: 10px 40px;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    transition: .5s;
+}
+
+.questionBtnBox .questionBtn:hover {
+    cursor: grab;
+    box-shadow: 0 0 10px 4px white;
+}
+
+.questionBtnBox .questionBtn:active {
+    cursor: grabbing;
+    transform: scale(.9);
+}
+
+.changeBtnBox {
+    position: absolute;
+    bottom: 60px;
+    right: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.changeBtnBox .change {
+    font-size: 24px;
+    color: white;
+    font-weight: bolder;
+    background-color: #d10000;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 0px #a30000, 0 15px 0 10px white, 0 25px 0 10px #dddddd;
+}
+
+.changeBtnBox .change:hover {
+    cursor: grab;
+}
+
+.changeBtnBox .change:active {
+    cursor: grabbing;
+    background-color: red;
+    box-shadow: 0 0px 0px #a30000, 0 5px 0 10px white, 0 15px 0 10px #dddddd;
+    transform: translateY(10px);
+}
+
+.changeBtnBox .change.next {
+    margin-left: 100px;
+}
+
+/* --------------------------------ANIMATION */
+@keyframes meteorite3 {
+    to {
+        right: 100%;
+        top: 150%;
+        transform: translateY(-100%) scale(5);
+    }
+}
+
+@keyframes animateSatellite {
+    to {
+        top: 10px;
+        right: 10px;
+        transform: translateY(20px);
+    }
+}
+
+/* -------------------------------QUESTION FORM----------------------- */
+.questionForm {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--primary-color);
+    display: grid;
+    grid-template-rows: 35% 65%;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: 1s;
+}
+
+.questionForm--meteorite1 {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-100%, -100%);
+    width: 250px;
+    animation: animateDropMeteorite 3s ease-in-out 1s infinite;
+}
+
+@keyframes animateDropMeteorite {
+    to {
+        top: 120%;
+        left: 100%;
+        transform: scale(5);
+    }
+}
+
+.questionFormTop {
+    z-index: 1;
+    background-color: transparent;
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.questionBoardBox {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board {
+    background-color: white;
+    height: 90%;
+    width: 90%;
+    border: solid 10px purple;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.scoreBoardBox {
+    display: grid;
+    grid-template-rows: 50% 50%;
+}
+
+.scoreBoard__position {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.descriptionBtn {
+    color: purple;
+    font-size: 32px;
+    font-weight: bolder;
+    background-color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: inset 10px 10px 10px #888888;
+}
+
+.descriptionBtn:hover {
+    cursor: grab;
+    box-shadow: 10px 10px 10px #888888;
+}
+
+.descriptionBtn:active {
+    cursor: grabbing;
+    box-shadow: inset 10px 10px 10px #888888;
+}
+
+.timeBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.time {
+    height: 100px;
+    width: 100px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 10px purple;
+}
+
+.timeNumber {
+    user-select: none;
+    color: purple;
+    font-size: 40px;
+}
+
+.backForm {
+    font-size: 30px;
+    padding: 10px 40px;
+    color: purple;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: inset 5px 5px 5px #888888;
+    transition: .5;
+}
+
+.backForm:hover {
+    cursor: grab;
+    box-shadow: 5px 5px 5px #888888;
+}
+
+.backForm:active {
+    cursor: grabbing;
+    transform: scale(.95);
+    box-shadow: inset 5px 5px 5px #888888;
+}
+
+.questionFormBottom {
+    background-color: transparent;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.answer {
+    position: relative;
+    height: 180px;
+    width: 45%;
+    background-color: white;
+    border: solid 10px purple;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    height: 60px;
+    width: 60px;
+    font-size: 32px;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: solid 6px purple;
+    border-radius: 50%;
+    transition: .5s;
+}
+
+.imgAnswer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    width: 60px;
+}
+
+/* .imgAnswer1 {
+} */
+
+.imgAnswer2 {
+    width: 80px;
+}
+
+.imgAnswer3 {
+    width: 100px;
+}
+
+.imgAnswer4 {
+    width: 80px;
+}
+
+.descriptionPage {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.descriptionForm {
+    height: 80%;
+    width: 80%;
+    font-size: 32px;
+    background-color: white;
+    overflow: auto;
+    border-radius: 10px;
+    padding: 20px;
+    border: solid 10px purple;
+}
+
+.descriptionForm::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.descriptionForm::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.descriptionForm::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: purple;
+}
+
+.closeDescription:hover {
+    cursor: grab;
+    box-shadow: 10px 10px 5px #800000;
+}
+
+.closeDescription {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 60px;
+    width: 60px;
+    font-size: 24px;
+    color: white;
+    background-color: #ca0202;
+    border: none;
+    border-radius: 50%;
+    box-shadow: inset 10px 10px 5px #800000;
+}
+
+.closeDescription:active {
+    cursor: grabbing;
+    background-color: red;
+    box-shadow: inset 10px 10px 5px #800000;
+}
